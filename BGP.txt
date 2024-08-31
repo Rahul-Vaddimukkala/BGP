@@ -1,0 +1,29 @@
+How does Border Gateway Protocol work?
+
+BGP works by establishing connections with BGP peers, exchanging BGP messages, selecting the best path based on path attributes, and advertising the best path to peers, all while preventing routing loops using the Path Vector algorithm. 
+
+
+The protocol also supports route aggregation and policy-based routing. It involves complex processes and mechanisms to ensure efficient and loop-free routing between different autonomous systems (AS) on the internet. Below is a technical explanation of the working of BGP:
+
+1. Establishment of BGP Session:
+TCP Connection: BGP establishes a TCP connection on port 179 between the BGP peers. This connection is used for exchanging BGP messages.
+BGP Peering: BGP routers form a peer relationship, known as a BGP session, to exchange routing information. Peers are established manually by configuring each router with the IP address of the other router.
+
+2. Exchange of BGP Messages:
+OPEN Message: After the TCP connection is established, each BGP router sends an OPEN message to negotiate parameters and authenticate each other.
+UPDATE Message: BGP routers exchange UPDATE messages to advertise new routes or withdraw previously advertised routes.
+KEEPALIVE Message: KEEPALIVE messages are exchanged to maintain the connection and verify that the peers are reachable.
+NOTIFICATION Message: If errors occur, a BGP router sends a NOTIFICATION message and closes the connection.
+
+3. Path Attributes and Route Selection:
+AS Path: BGP uses path attributes, such as the AS path, to make routing decisions. The AS path is a list of AS that the routing information has traversed.
+Route Selection: BGP selects the best path based on path attributes, including AS path, next-hop IP address, and others. The selected path is then added to the BGP routing table.
+
+4. Advertisement of Best Path:
+BGP advertises the best path to all BGP peers. If a better path is found, BGP updates the peers with the new path.
+
+5. Path Vector Algorithm:
+BGP uses the Path Vector algorithm to prevent routing loops by carrying the AS path information with the route. If a BGP router receives a route containing its own AS in the AS path, it will reject the route to prevent a loop.
+
+6. Route Aggregation and Filtering:
+BGP can aggregate multiple IP prefixes into a single route advertisement, reducing the size of routing tables.
